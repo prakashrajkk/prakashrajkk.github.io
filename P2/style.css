@@ -4,4 +4,17 @@
     border: 1px solid gray;
     border-radius: 10px;
     width: 500px;
+    background-color:springgreen;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    /* display: flex; */
 }
+.App-Container:hover{
+    transition-duration: 2s;
+    border-radius: 30px;
+    border-color: tomato;
+    background-color:crimson;
+}
+
