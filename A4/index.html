@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        function greet()
-        {
-            alert("txtname.value")
-        }
+      function greet() {
+        alert(txtname.value);
+      }
+      function calc() {
+        let a = Number(txtname.value);
+        let b = Number(txt.value);
+        // alert(a+ b)
+        divResult.innerHTML=a+b;
+        divResult.innerHTML=a-b;
+        divResult.innerHTML=a*b;
+        divResult.innerHTML=a/b;
+      }
+
     </script>
-</head>
- <input type="text" id="txtname" >
-<body>
-   <button  onclick="GREET()" STYLE="background-color: cadetblue;">CLICK ME</button> 
-</body>
+  </head>
+
+  <body>
+     <input type="text" id="ttname" />
+     <button >Click</button>
+     <hr>
+    <input type="number" id="txtname" />
+    <input type="number" id="txt" />
+
+    <button onclick="calc()" style="background-color: cadetblue">SUBMIT</button>
+    <hr>
+    <div id="divResult"></div>
+  </body>
 </html>

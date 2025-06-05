@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function handleClick() {
+        let a = document.getElementById("n1").value;
+        let b = document.getElementById("n2").value;
+        let c = document.getElementById("n3").value;
+
+        document.getElementById("divResult").innerHTML =
+          "Name: " + a + "<br>" +
+          "Email: " + b + "<br>" +
+          "Password: " + c;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>ENTER THE DETAILS PLEASE </h1>
+    <hr>
+    <input type="text" id="n1" placeholder="Name">
+    <input type="email" id="n2" placeholder="Email">
+    <input type="password" id="n3" placeholder="Password">
+    <button onclick="handleClick()">SUBMIT</button>
+    <hr>
+    <div id="divResult"></div>
+  </body>
+</html>
