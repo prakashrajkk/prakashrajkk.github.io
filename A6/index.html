@@ -9,11 +9,10 @@
         let a = document.getElementById("n1").value;
         let b = document.getElementById("n2").value;
         let c = document.getElementById("n3").value;
-
-        document.getElementById("divResult").innerHTML =
-          "Name: " + a + "<br>" +
-          "Email: " + b + "<br>" +
-          "Password: " + c;
+      let s=`
+       HERE IS THE INFO  <h1>${a}</h1>   <h1>${b} </h1>  <h1>${c}</h1>   `
+        divResult.innerHTML = s
+         
       }
     </script>
   </head>
@@ -21,9 +20,9 @@
   <body>
     <h1>ENTER THE DETAILS PLEASE </h1>
     <hr>
-    <input type="text" id="n1" placeholder="Name">
-    <input type="email" id="n2" placeholder="Email">
-    <input type="password" id="n3" placeholder="Password">
+    <input type="text" id="n1" placeholder="Name" required>
+    <input type="email" id="n2" placeholder="Email" required>
+    <input type="password" id="n3" placeholder="Password" required>
     <button onclick="handleClick()">SUBMIT</button>
     <hr>
     <div id="divResult"></div>
