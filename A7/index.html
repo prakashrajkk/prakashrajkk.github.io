@@ -6,23 +6,30 @@
     <title>Fruit List</title>
     <script>
       let fruits = [];
+      function del(value) {
+        fruits = fruits.filter((e) => e != value);
+        dispFruits()
+      }
+      function dispFruits() {
+        let listHTML = fruits
+          .map(
+            (fruit) =>
+              `<li>${fruit}<button onclick=del('${fruit}')>Delete</button></li>`
+          )
+          .join("");
+        document.getElementById("fruitList").innerHTML = listHTML;
+      }
       function add() {
         const input = document.getElementById("txt1").value;
         fruits.push(input);
-        dispfruit()
+        dispFruits()
       }
-      function del(value)
-      {  
-         fruits=fruits.filter(e=>e!=value);
-         dispfruit();
+        function search() {
+          let vl=document.getElementById("txt1").value;
+        fruits = fruits.filter((e) => e == vl);
+        dispFruits()
       }
-      function dispfruit()
-      {
-         const listHTML = fruits
-        .map((fruit, index) => `<li>${fruit} <button onclick="del('${fruit}')">DELETE</button></li>`)
-        .join("");
-        document.getElementById("fruitList").innerHTML = listHTML;   
-      } 
+
     </script>
   </head>
   <body>
@@ -30,8 +37,8 @@
       <h1>Fruit List</h1>
       <input type="text" id="txt1" />
       <button onclick="add()">Add</button>
+       <button onclick="search()">SEARCH</button>
       <ul id="fruitList"></ul>
-      <!-- <button onclick="del()">CLICK TO DELETE</button> -->
     </div>
   </body>
 </html>
