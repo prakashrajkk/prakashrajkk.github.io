@@ -26,8 +26,15 @@
       }
         function search() {
           let vl=document.getElementById("txt1").value;
-        fruits = fruits.filter((e) => e == vl);
-        dispFruits()
+        let result  = fruits.filter((e) => e == vl);
+        let listHTML = result
+          .map(
+            (fruit) =>
+              `<li>${fruit}<button onclick=del('${fruit}')>Delete</button></li>`
+          )
+          .join("");
+        document.getElementById("fruitList").innerHTML = listHTML;
+        
       }
 
     </script>

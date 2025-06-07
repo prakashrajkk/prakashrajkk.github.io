@@ -1,35 +1,91 @@
+const users = [];
+let user={ }
 const showLogin = () => {
-    let str = `
-        <div class='App-Container'>
-            <h1>Login Form</h1>
-            <p><input type="text" id="txtEmail" placeholder="Email"></p>
-            <p><input type="password" id="txtPass" placeholder="Password"></p>
-            <p><button onclick="showhome()">Log In</button></p>
-            <p><button onclick='showRegister()'>Create Account</button></p>
-        </div>
+  let str = `
+    <div>
+    <h1>Login Form</h1>
+    <p><div id="dvMsg"></div></p>
+    <p><input type="text" id="txtEmail"></p>
+    <p><input type="password" id="txtPass"></p>
+    <p><button onclick='validateUser()'>Log In</button></p>
+    <p><button onclick='showRegister()'>Create Account</button></p>
+    </div>
     `;
-    root.innerHTML = str;
+  root.innerHTML = str;
 };
 
 const showRegister = () => {
-    let str = `
-        <h1>Register Form</h1>
-        <p><input type="text" id="txtName" placeholder="Name"></p>
-        <p><input type="text" id="txtEmail" placeholder="Email"></p>
-        <p><input type="password" id="txtPass" placeholder="Password"></p>
-        <p><button onclick="showLogin()">Register</button></p>
-        <p><button onclick="showhome()">Login</button></p>
+  let str = `
+    <h1>Register Form</h1>
+    <p><input type="text" id="txtName"></p>
+     <p><input type="text" id="txtEmail"></p>
+    <p><input type="password" id="txtPass"></p>
+    <button onclick='addUser()'>Register</button>
+    <hr>
+    <button onClick='showLogin()'>Alread a Member? Login here...</button>
     `;
-    root.innerHTML = str;
+  root.innerHTML = str;
 };
 
-const showhome = () => {
-    let str = `
-        <div class='App-Container'>
-            <h1>WELCOME TO THE WEBSITE</h1>
-            <p>You're now logged in!</p>
-            <button onclick="showLogin()">Logout</button>
-        </div>
+const showHome = () => {
+  let str = `
+    <h1>Welcome ${user.name}</h1>
+    <hr>
+    <p><select>
+     <option value=0>--select--</option>
+      <option value=1 id="op">--Deposit--</option>
+      <option value=2 id="op2">--Withdraw--</option>
+      </select></p>
+      <p>
+      <input type="number" id='txtAmount'>
+      </p>
+      <p><button onclick="checkBalance()">Submit</button>
+
+    <button onclick='showLogin()'>Logout</button>
+    <hr>
+    <p>Current balance:${user.balance}
     `;
-    root.innerHTML = str;
+  root.innerHTML = str;
+//   console.log(user);
 };
+
+const addUser = () => {
+  const obj = {
+    name: document.getElementById("txtName").value,
+    email: document.getElementById("txtEmail").value,
+    pass: document.getElementById("txtPass").value,
+    balance:0
+  };
+  users.push(obj);
+  showLogin();
+};
+
+const validateUser = () => {
+  let email = document.getElementById("txtEmail").value;
+  let pass = document.getElementById("txtPass").value;
+   user = users.find(
+    (e) => e.email === email && e.pass === pass
+  )
+  if (user) {
+    showHome();
+  } else {
+    dvMsg.innerHTML = "Access Denied";
+  }
+};
+
+function checkBalance(){
+    let v1=document.querySelector("select").value;
+    let amount=document.getElementById("txtAmount").value;
+    if(v1==1)
+    {
+     
+     user.balance+=amount;
+   
+    }
+    else if(v1==2)
+    {
+      user.balance-=amount;
+      
+    }
+    showHome();
+}
