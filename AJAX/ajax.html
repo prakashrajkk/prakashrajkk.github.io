@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API'S AND STUFF</title>
+  </head>
+  <body>
+    <h1>ENTER THE NAME</h1>
+    <hr />
+    <label>NAME</label>
+    <input type="text" id="name" />
+    <button onclick="search()">SUBMIT</button>
+    <hr />
+
+    <div id="n1"></div>
+
+    <script>
+      const search = () => {
+        const url = "https://jsonplaceholder.typicode.com/users";
+
+        fetch(url)
+          .then((res) => res.json())
+          .then((users) => {
+            let name = document.getElementById("name").value;
+            let str = " ";
+            const v = users.find((e) => e.name === name);
+            if (v) {
+              str = ` ${v.id}`;
+            } else {
+              str = "User not found!";
+            }
+            document.getElementById("n1").innerHTML = str;
+          });
+      };
+    </script>
+  </body>
+</html>
